@@ -3,6 +3,8 @@ spring:
     name: employee-service
   profiles:
     active: local
+  liquibase:
+    change-log: classpath:db-changelog.xml
 ---
 spring:
   profiles: local
@@ -15,7 +17,14 @@ spring:
     database: h2
     database-platform: org.hibernate.dialect.H2Dialect
     show_sql: true
-    generate-ddl: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      properties:
+        hibernate.cache.use_query_cache: false
+        hibernate.generate_statistics: true
   h2:
     console:
       enabled: true
