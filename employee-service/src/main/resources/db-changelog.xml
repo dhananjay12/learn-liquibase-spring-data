@@ -23,5 +23,12 @@
     </createTable>
   </changeSet>
 
+  <changeSet id="add-dob-column-in-employee" author="employee-service-db">
+    <addColumn tableName="EMPLOYEE">
+      <column name="DOB" type="date">
+        <constraints nullable="false"></constraints>
+      </column>
+    </addColumn>
+  </changeSet>
 
 </databaseChangeLog>

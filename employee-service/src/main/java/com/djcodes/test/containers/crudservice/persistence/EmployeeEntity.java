@@ -1,11 +1,14 @@
 package com.djcodes.test.containers.crudservice.persistence;
 
+import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class EmployeeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer id;
 
@@ -32,5 +35,9 @@ public class EmployeeEntity {
 
     @Column(name ="EMAIL")
     private String email;
+
+    @Column(name ="DOB")
+    @Temporal(TemporalType.DATE)
+    Calendar dob;
 
 }

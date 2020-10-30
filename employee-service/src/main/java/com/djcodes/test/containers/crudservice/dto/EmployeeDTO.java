@@ -1,6 +1,9 @@
 package com.djcodes.test.containers.crudservice.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -27,5 +30,7 @@ public class EmployeeDTO {
     @Email(message = "Invalid Email")
     private String email;
 
+    @JsonFormat(pattern="dd-MM-yyyy")
+    private Calendar dob;
 
 }
