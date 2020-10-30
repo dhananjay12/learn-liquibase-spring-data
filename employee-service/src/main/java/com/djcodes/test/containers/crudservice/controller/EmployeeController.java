@@ -27,7 +27,7 @@ public class EmployeeController {
     EmployeeRepository employeeRepository;
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> find(@PathVariable long id) {
+    public ResponseEntity<?> find(@PathVariable int id) {
         Optional<EmployeeEntity> result = employeeRepository.findById(id);
         if (result.isPresent()) {
             return ResponseEntity.ok(EmployeeMapper.makeDTO(result.get()));
@@ -48,7 +48,7 @@ public class EmployeeController {
 
     @PutMapping("/{id}")
     public EmployeeDTO updateCar(
-        @PathVariable long id, @Valid @RequestBody EmployeeDTO employeeDTO) throws EntityNotFoundException {
+        @PathVariable int id, @Valid @RequestBody EmployeeDTO employeeDTO) throws EntityNotFoundException {
         if(employeeDTO.getId()!=null && !employeeDTO.getId().equals(id)){
             throw new ValidationException("Id in path and body does not match");
         }
@@ -61,7 +61,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable long id) {
+    public ResponseEntity<?> delete(@PathVariable int id) {
         Optional<EmployeeEntity> result = employeeRepository.findById(id);
         if (result.isPresent()) {
             return ResponseEntity.ok().build();
@@ -71,7 +71,7 @@ public class EmployeeController {
     }
 
 
-    private EmployeeEntity findEmployeeById(Long id) throws EntityNotFoundException {
+    private EmployeeEntity findEmployeeById(Integer id) throws EntityNotFoundException {
         return employeeRepository
             .findById(id)
             .orElseThrow(() -> new EntityNotFoundException("Could not find entity with id: " + id));

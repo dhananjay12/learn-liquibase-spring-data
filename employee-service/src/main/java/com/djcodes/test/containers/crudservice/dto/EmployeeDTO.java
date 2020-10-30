@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class EmployeeDTO {
 
 
-    private Long id;
+    private Integer id;
 
     @NotBlank(message = "First name can not be null!")
     private String fname;
