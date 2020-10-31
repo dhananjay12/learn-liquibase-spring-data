@@ -46,16 +46,10 @@
   </changeSet>
 
   <changeSet id="update-mobile-number-column-with-default-values" author="employee-service-db">
-    <update tableName="EMPLOYEE">
-      <column name="MOBILE" value="NA"/>
-      <where>MOBILE is null</where>
-    </update>
-    <rollback>
-      <update tableName="EMPLOYEE">
-        <column name="MOBILE"/>
-        <where>MOBILE = 'NA'</where>
-      </update>
-    </rollback>
-  </changeSet>
+        <update tableName="EMPLOYEE">
+            <column name="MOBILE" value="NA" />
+            <where>MOBILE is null</where>
+        </update>
+    </changeSet>
 
 </databaseChangeLog>
